@@ -8,7 +8,7 @@
 
 <img title="" src="./images/value-based%20method.png" alt="Formula for the value-based method" data-align="inline">
 
-By finding the optimal value function $\Q^*$ or $\V^*$, we are in fact indirectly finding an optimal policy $\pi^*$. The meaning of the formula here is: given a state–action pair $(s,a)$, each time we choose the action $a$ that, according to the value function, leads to the state with the largest value.
+By finding the optimal value function $\Q^* $ or $\V^* $, we are in fact indirectly finding an optimal policy $\pi^*$. The meaning of the formula here is: given a state–action pair $(s,a)$, each time we choose the action $a$ that, according to the value function, leads to the state with the largest value.
 
 **policy-based** methods directly train an optimal policy $\pi^*$, so that given a state $s$ as input, the policy outputs the action $a$ we should take.
 
