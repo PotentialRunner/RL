@@ -44,4 +44,46 @@ Unlike the state-value function, the action-value function is not the value of a
 > 
 > Also note that if we implement these two methods in the straightforward way—i.e., filling in every state with the value it should have—this would mean we need to start from every state and ... which is extremely time-consuming and unrealistic. At this point, there is a very useful mathematical tool to help us handle this problem — the **bellman equation**.
 
-## 3. The Bellman Equation (Bellman equation)
+## 3. The Bellman Equation
+
+Since the calculation of total reward for a concrete state in entire episode is hard. We don't need to calculate a complete reward, in stead, we could use Bellman Equation.
+
+The fomula is:
+
+![bellman equation](./images/bellman%20equation.png)
+
+As we can see, we could replace the entire $G(t)$ with $R_{t+1}+\gamma*V_\pi(S_{t+1})$. So the update process is simplified: $V(S_t)=R_{t+1}+\gamma*V(S_{t+1})$.
+
+## 4. Monte Carlo(MC) and Temporal Difference(TD) Learning
+
+There are two learning strategies which help us learn an optimal value function or optimal policy.
+
+### 4.1 Monte Carlo method
+
+Here we take state value function as our value function.
+
+Monte Carlo waits until the end of the episode, calculates $G(t)$ (return) and uses it as a target for updating $V(S_t)$. So it requires a complete episode of interaction before updating our value function.
+
+![monte carlo](./images/mc.png)
+
+By running more and more episodes, the agent will learn to play better and better. 
+
+> Note: Monte Carlo method will calculate the cummulative reward through the **entire episode** $G(t)$. And then use it to update the status value.
+
+### 4.2 Temporal Difference method
+
+TD method is not as the same as MC method. It updates the state value instantly at every time step $t$. So it updates more frequently. Here is the formula:
+
+![temporal difference](./images/td.png)
+
+> Note: When we are at state $S_t$ and take action $A_t$, we get reward $R_{t+1}$ and we are in the new state $S_{t+1}$. We use $R_{t+1}$ and the value of next state $V(S_{t+1})$ times $\gamma$ to do addition. Then, we use it as the target to update $V(S_t)$. 
+
+### 4.3 Conclusion
+
+With Monte Carlo, we update the value function from a complete episode, and so we use the actual accurate discounted return of this episode.
+
+With TD Learning, we update the value function from a step, and we replace​ $G(t)$,which we don’t know, with an estimated return called the TD target.
+
+I don't need to say much, here is the best conclusion I think...
+
+![conclusion](./images/conclusion.png)
