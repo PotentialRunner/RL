@@ -87,3 +87,39 @@ With TD Learning, we update the value function from a step, and we replace​ $G
 I don't need to say much, here is the best conclusion I think...
 
 ![conclusion](./images/conclusion.png)
+
+## 5. Q-Learning
+
+**Q-Learning** is a value-based method that is used to train the agent.
+
+1. It is a value-based method.
+
+2. It is off-policy method, which means it uses different method when in acting and updating. In a specific state we choose a specific action, we usually use $\epsilon$-greedy policy, while we usually use greedy policy when we update the current state value.
+
+3. It uses TD learning strategy to train the value function.
+
+**Q-Learning** uses a table called **Q-table** to store the state-action value. Like this:
+
+![q-table](./images/Q-table.png)
+
+The **Q-Learning** algorithm is as follows:
+
+![q-learning](./images/Q-Learning.png)
+
+> 1. First, we initialize the **Q-table**, usually initialize them as 0.
+> 
+> 2. Second, at the current state, we use $\epsilon$-greedy policy (or other policies) to choose an action.
+> 
+> 3. Three, we use the TD strategy to update the current state-action value. This time we use greedy policy to choose an action for the next state. (So called off-policy pattern).
+
+**Note:** What is $\epsilon$-greedy policy ? That means we choose to explore in a probability $\epsilon$, and we choose to exploit in a probability $1-\epsilon$. From the beginning of the training process, the $\epsilon$ is relatively big because we need to explore (make some random actions). As the training continues, the value of $\epsilon$ is smaller and smaller, means the agent needs to exploit more than explore.
+
+![epsilon-graph](./images/epsilon-graph.png)
+
+**Extra:** **Sarsa** algorithm, which is quite simillar to **Q-Learning**, is a little different. It is an *on-policy* algorithm, so it uses the same policy to choose action when it is in acting process and when it is in updating process.
+
+![sarsa](./images/Sarsa.png)
+
+Let's compare the difference between on-policy and off-policy algorithm.
+
+![on-policy and off-policy](./images/off-policy%20vs%20on-policy.png)
